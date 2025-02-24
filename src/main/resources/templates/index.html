@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking System</title>
+</head>
+<body>
+<h1>Hotel Booking System</h1>
+
+<!-- Room Section -->
+<h2>Rooms</h2>
+<form action="/room" method="post">
+    <input type="text" name="roomNumber" placeholder="Room Number" required>
+    <input type="text" name="type" placeholder="Type" required>
+    <button type="submit">Add Room</button>
+</form>
+<table border="1">
+    <tr>
+        <th>Room Number</th>
+        <th>Type</th>
+    </tr>
+    <tr th:each="room : ${rooms}">
+        <td th:text="${room.roomNumber}"></td>
+        <td th:text="${room.type}"></td>
+    </tr>
+</table>
+
+<!-- Guest Section -->
+<h2>Guests</h2>
+<form action="/guest" method="post">
+    <input type="text" name="name" placeholder="Guest Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <button type="submit">Add Guest</button>
+</form>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    <tr th:each="guest : ${guests}">
+        <td th:text="${guest.name}"></td>
+        <td th:text="${guest.email}"></td>
+    </tr>
+</table>
+
+<!-- Booking Section -->
+<h2>Bookings</h2>
+<form action="/booking" method="post">
+    <input type="text" name="roomNumber" placeholder="Room Number" required>
+    <input type="text" name="guestName" placeholder="Guest Name" required>
+    <input type="date" name="checkInDate" required>
+    <input type="date" name="checkOutDate" required>
+    <button type="submit">Add Booking</button>
+</form>
+<table border="1">
+    <tr>
+        <th>Room Number</th>
+        <th>Guest Name</th>
+        <th>Check-In Date</th>
+        <th>Check-Out Date</th>
+    </tr>
+    <tr th:each="booking : ${bookings}">
+        <td th:text="${booking.roomNumber}"></td>
+        <td th:text="${booking.guestName}"></td>
+        <td th:text="${booking.checkInDate}"></td>
+        <td th:text="${booking.checkOutDate}"></td>
+    </tr>
+</table>
+</body>
+</html>
